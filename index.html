@@ -7,34 +7,95 @@
 
 <style>
 *{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#07111f;color:white}
+.page{max-width:600px;margin:auto;min-height:100vh;background:#081525}
+.header{padding:20px;text-align:center;font-size:25px;font-weight:900;background:linear-gradient(135deg,#075dcc,#082c70)}
+.profile{padding:22px 18px}
+.row{display:flex;gap:15px;align-items:center}
+.logo{width:80px;height:80px;border-radius:50%;background:#1111a0;display:flex;align-items:center;justify-content:center;color:#ffe600;font-weight:900;font-size:13px;text-align:center;border:3px solid white}
+.name{font-size:21px;font-weight:800}
+.handle{color:#9eb1c8;margin-top:5px}
+.stats{display:flex;justify-content:space-around;text-align:center;margin:22px 0}
+.stats b{display:block;font-size:20px}
+.stats span{color:#91a5bc;font-size:13px}
+.bio{text-align:center;line-height:1.5;color:#dbe6f2}
+.buttons{display:flex;gap:9px;margin-top:18px}
+button,a{cursor:pointer}
+.follow,.official{flex:1;padding:13px;border:0;border-radius:10px;font-weight:800;font-size:14px;text-align:center;text-decoration:none}
+.follow{background:white;color:#111}
+.following{background:#1266d6;color:white}
+.official{background:#24364d;color:white}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;padding:12px}
+.post{height:180px;border-radius:15px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-size:18px;font-weight:900;cursor:pointer;transition:.15s}
+.post:active{transform:scale(.94)}
+.post small{margin-top:10px;font-size:11px;font-weight:normal;opacity:.8}
+.p1{background:linear-gradient(145deg,#09143c,#315fc4)}
+.p2{background:linear-gradient(145deg,#171717,#8d5f3c)}
+.p3{background:linear-gradient(145deg,#111,#555,#aaa)}
+.p4{background:linear-gradient(145deg,#29104b,#7337aa)}
+.p5{background:linear-gradient(145deg,#06202d,#147b91)}
+.p6{background:linear-gradient(145deg,#151515,#344b7e)}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:99;align-items:center;justify-content:center;padding:20px}
+.modal.show{display:flex}
+.modalbox{width:100%;max-width:420px;background:#102239;border:1px solid #31506e;border-radius:18px;padding:22px}
+.modalbox h2{margin-top:0}
+.modalbox p{color:#cbd9e8;line-height:1.6}
+.close{width:100%;padding:13px;border:0;border-radius:10px;background:#24364d;color:white;font-weight:800}
+footer{text-align:center;color:#71869d;font-size:12px;padding:20px}
+</style>
+</head>
 
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#07111f;
-color:white;
-}
+<body>
 
-.page{
-max-width:600px;
-margin:auto;
-min-height:100vh;
-background:#081525;
-}
+<div class="page">
 
-.header{
-padding:20px;
-text-align:center;
-font-size:25px;
-font-weight:900;
-background:linear-gradient(135deg,#075dcc,#082c70);
-}
+<div class="header">eFootball™</div>
 
-.profile{
-padding:22px 18px;
-}
+<section class="profile">
+<div class="row">
+<div class="logo">eFootball™</div>
+<div>
+<div class="name">eFootball Official Page</div>
+<div class="handle">@efootballofficialpage</div>
+</div>
+</div>
 
-.row{
+<div class="stats">
+<div><b>24</b><span>Posts</span></div>
+<div><b id="followers">1.2K</b><span>Followers</span></div>
+<div><b>18</b><span>Following</span></div>
+</div>
+
+<div class="bio">
+eFootball updates, cards, news & game content.
+<br>
+Fan-made page. Not affiliated with KONAMI.
+</div>
+
+<div class="buttons">
+<button id="followBtn" class="follow" onclick="follow()">Follow</button>
+<a class="official" href="https://www.konami.com/efootball/en/" target="_blank">Official eFootball</a>
+</div>
+</section>
+
+<div class="grid">
+
+<div class="post p1" onclick="openCard('Last Claim Card','Check the latest claim-card information and updates posted on this fan page.')">
+LAST CLAIM<br>CARD
+<small>Tap to open</small>
+</div>
+
+<div class="post p2" onclick="openCard('Epic Players','View information about featured Epic Players and new player releases.')">
+EPIC<br>PLAYERS
+<small>Tap to open</small>
+</div>
+
+<div class="post p3" onclick="openCard('New Update','View the latest eFootball update information posted on this fan page.')">
+NEW<br>UPDATE
+<small>Tap to open</small>
+</div>
+
+<div class="post p4" onclick="openCard('Pack Opening','View pack-opening.row{
 display:flex;
 gap:15px;
 align-items:center;
