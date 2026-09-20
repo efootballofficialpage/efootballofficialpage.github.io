@@ -574,3 +574,430 @@ id="player"
 class="panel">
 
 <div
+.panel{
+display:none;
+padding:0 12px 20px;
+}
+
+.panel.active{
+display:block;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:9px;
+}
+
+.post{
+height:170px;
+border-radius:15px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+font-size:18px;
+font-weight:900;
+cursor:pointer;
+user-select:none;
+transition:.15s;
+}
+
+.post:active{
+transform:scale(.94);
+}
+
+.post small{
+margin-top:10px;
+font-size:11px;
+font-weight:normal;
+opacity:.8;
+}
+
+.p1{background:linear-gradient(145deg,#09143c,#315fc4)}
+.p2{background:linear-gradient(145deg,#171717,#8d5f3c)}
+.p3{background:linear-gradient(145deg,#111,#555,#aaa)}
+.p4{background:linear-gradient(145deg,#29104b,#7337aa)}
+.p5{background:linear-gradient(145deg,#06202d,#147b91)}
+.p6{background:linear-gradient(145deg,#151515,#344b7e)}
+
+.card{
+background:#0d1d31;
+border:1px solid #1d3855;
+border-radius:15px;
+padding:18px;
+margin-bottom:12px;
+}
+
+.reward{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:15px 0;
+border-bottom:1px solid #233b55;
+}
+
+.claim{
+width:105px;
+padding:12px;
+border:0;
+border-radius:9px;
+background:#1266d6;
+color:white;
+font-weight:800;
+cursor:pointer;
+}
+
+.claimed{
+background:#168548;
+}
+
+input{
+width:100%;
+padding:13px;
+margin:7px 0 12px;
+border-radius:9px;
+border:1px solid #31506e;
+background:#07111f;
+color:white;
+font-size:15px;
+}
+
+.save{
+width:100%;
+padding:13px;
+border:0;
+border-radius:9px;
+background:#1266d6;
+color:white;
+font-weight:800;
+cursor:pointer;
+}
+
+.notice{
+color:#91a6bc;
+font-size:12px;
+line-height:1.5;
+}
+
+footer{
+text-align:center;
+color:#71869d;
+font-size:12px;
+padding:20px;
+}
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.78);
+z-index:99;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.modal.show{
+display:flex;
+}
+
+.modalbox{
+width:100%;
+max-width:420px;
+background:#102239;
+border:1px solid #31506e;
+border-radius:18px;
+padding:22px;
+}
+
+.modalbox h2{
+margin-top:0;
+}
+
+.modalbox p{
+color:#cbd9e8;
+line-height:1.6;
+}
+
+.close{
+width:100%;
+padding:13px;
+border:0;
+border-radius:10px;
+background:#24364d;
+color:white;
+font-weight:800;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<div class="header">
+eFootball™
+</div>
+
+<section class="profile">
+
+<div class="row">
+
+<div class="logo">
+eFootball™
+</div>
+
+<div>
+<div class="name">
+eFootball Official Page
+</div>
+
+<div class="handle">
+@efootballofficialpage
+</div>
+</div>
+
+</div>
+
+<div class="stats">
+
+<div>
+<b>24</b>
+<span>Posts</span>
+</div>
+
+<div>
+<b id="followers">1.2K</b>
+<span>Followers</span>
+</div>
+
+<div>
+<b>18</b>
+<span>Following</span>
+</div>
+
+</div>
+
+<div class="bio">
+eFootball updates, cards, news & game content.
+<br>
+Fan-made page. Not affiliated with KONAMI.
+</div>
+
+<div class="buttons">
+
+<button
+id="followBtn"
+class="follow"
+onclick="follow()">
+Follow
+</button>
+
+<a
+class="official"
+href="https://www.konami.com/efootball/en/"
+target="_blank">
+Official eFootball
+</a>
+
+</div>
+
+</section>
+
+
+<div class="tabs">
+
+<button
+class="tab active"
+onclick="tab('home',this)">
+Home
+</button>
+
+<button
+class="tab"
+onclick="tab('rewards',this)">
+Rewards
+</button>
+
+<button
+class="tab"
+onclick="tab('player',this)">
+Player ID
+</button>
+
+</div>
+
+
+<!-- HOME -->
+
+<div
+id="home"
+class="panel active">
+
+<div class="grid">
+
+<div
+class="post p1"
+onclick="post('Last Claim Card','Tap this card to see the latest fan-page claim card information.')">
+
+LAST CLAIM
+<br>
+CARD
+
+<small>Tap to view</small>
+
+</div>
+
+
+<div
+class="post p2"
+onclick="post('Epic Players','Tap this card to see featured Epic Player information.')">
+
+EPIC
+<br>
+PLAYERS
+
+<small>Tap to view</small>
+
+</div>
+
+
+<div
+class="post p3"
+onclick="post('New Update','This is the latest update posted on this fan page. Tap the cards to open their information.')">
+
+NEW
+<br>
+UPDATE
+
+<small>Tap to view</small>
+
+</div>
+
+
+<div
+class="post p4"
+onclick="post('Pack Opening','Tap to view pack-opening content and fan reactions.')">
+
+PACK
+<br>
+OPENING
+
+<small>Tap to view</small>
+
+</div>
+
+
+<div
+class="post p5"
+onclick="post('Player Ratings','Tap to view player rating information and discussions.')">
+
+PLAYER
+<br>
+RATINGS
+
+<small>Tap to view</small>
+
+</div>
+
+
+<div
+class="post p6"
+onclick="post('eFootball News','Tap to view the latest news posted on this fan page.')">
+
+eFOOTBALL
+<br>
+NEWS
+
+<small>Tap to view</small>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- REWARDS -->
+
+<div
+id="rewards"
+class="panel">
+
+<div class="card">
+
+<h2>
+Fan Rewards
+</h2>
+
+<div class="reward">
+
+<div>
+<b>Daily Bonus</b>
+<br>
+<span class="notice">
+Fan-page reward
+</span>
+</div>
+
+<button
+class="claim"
+onclick="claim(this)">
+Claim
+</button>
+
+</div>
+
+
+<div class="reward">
+
+<div>
+<b>Weekly Bonus</b>
+<br>
+<span class="notice">
+Fan-page reward
+</span>
+</div>
+
+<button
+class="claim"
+onclick="claim(this)">
+Claim
+</button>
+
+</div>
+
+
+<div class="reward">
+
+<div>
+<b>Event Bonus</b>
+<br>
+<span class="notice">
+Fan-page reward
+</span>
+</div>
+
+<button
+class="claim"
+onclick="claim(this)">
+Claim
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PLAYER -->
+
+<div
+id="player"
+class="panel">
+
+<div
