@@ -6,523 +6,869 @@
 <title>eFootball Official Page</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #07111f;
-  color: white;
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#07111f;
+  color:#fff;
 }
 
-header {
-  background: linear-gradient(135deg, #0b63ce, #062c72);
-  padding: 28px 18px;
-  text-align: center;
+.page{
+  max-width:600px;
+  margin:auto;
+  min-height:100vh;
+  background:#081525;
 }
 
-.logo {
-  font-size: 32px;
-  font-weight: 900;
-  letter-spacing: -1px;
+.header{
+  padding:18px;
+  text-align:center;
+  font-size:24px;
+  font-weight:900;
+  background:linear-gradient(135deg,#075dcc,#082c70);
 }
 
-.logo span {
-  color: #ffd400;
+.profile{
+  padding:22px 18px;
 }
 
-.handle {
-  opacity: .85;
-  margin-top: 6px;
+.profile-row{
+  display:flex;
+  gap:15px;
+  align-items:center;
 }
 
-.container {
-  max-width: 720px;
-  margin: auto;
-  padding: 18px;
+.logo{
+  width:82px;
+  height:82px;
+  flex-shrink:0;
+  border-radius:50%;
+  background:#1010a0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#ffe600;
+  font-weight:900;
+  font-size:14px;
+  text-align:center;
+  border:3px solid #fff;
 }
 
-.card {
-  background: #0d1b2d;
-  border: 1px solid #193451;
-  border-radius: 18px;
-  padding: 18px;
-  margin-bottom: 16px;
-  box-shadow: 0 8px 25px rgba(0,0,0,.25);
+.name{
+  font-size:21px;
+  font-weight:800;
 }
 
-.stats {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  margin: 15px 0;
+.handle{
+  color:#9eb1c8;
+  margin-top:5px;
 }
 
-.stats b {
-  display: block;
-  font-size: 21px;
+.stats{
+  display:flex;
+  justify-content:space-around;
+  text-align:center;
+  margin:22px 0;
 }
 
-.stats small {
-  color: #9db0c8;
+.stats b{
+  display:block;
+  font-size:20px;
 }
 
-.bio {
-  text-align: center;
-  color: #d8e3ef;
-  line-height: 1.5;
+.stats span{
+  color:#91a5bc;
+  font-size:13px;
 }
 
-.tabs {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 15px;
+.bio{
+  text-align:center;
+  line-height:1.5;
+  color:#dbe6f2;
 }
 
-.tabs button {
-  flex: 1;
+.buttons{
+  display:flex;
+  gap:9px;
+  margin-top:18px;
 }
 
 button,
-.link {
-  border: 0;
-  border-radius: 12px;
-  padding: 13px 15px;
-  background: #1266d6;
-  color: white;
-  font-weight: 700;
-  font-size: 15px;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
+.button{
+  flex:1;
+  border:0;
+  padding:13px;
+  border-radius:10px;
+  font-weight:800;
+  font-size:14px;
+  cursor:pointer;
+  text-align:center;
+  text-decoration:none;
 }
 
-button:hover,
-.link:hover {
-  opacity: .9;
+.follow{
+  background:#fff;
+  color:#111;
 }
 
-.secondary {
-  background: #182b42;
+.follow.following{
+  background:#1266d6;
+  color:#fff;
 }
 
-.section {
-  display: none;
+.official{
+  background:#24364d;
+  color:#fff;
 }
 
-.section.active {
-  display: block;
+.tabs{
+  display:flex;
+  gap:7px;
+  padding:0 18px 15px;
 }
 
-input {
-  width: 100%;
-  padding: 13px;
-  margin: 7px 0 10px;
-  border-radius: 10px;
-  border: 1px solid #31506e;
-  background: #081522;
-  color: white;
-  font-size: 15px;
+.tab{
+  background:#14283e;
+  color:#fff;
 }
 
-.reward {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  border-top: 1px solid #20364d;
-  padding: 14px 0;
+.tab.active{
+  background:#1266d6;
 }
 
-.reward:first-child {
-  border-top: 0;
+.content{
+  padding:0 12px 20px;
 }
 
-.badge {
-  background: #153a68;
-  padding: 7px 10px;
-  border-radius: 20px;
-  font-size: 12px;
+.panel{
+  display:none;
 }
 
-.posts {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+.panel.active{
+  display:block;
 }
 
-.post {
-  height: 140px;
-  border-radius: 14px;
-  background: linear-gradient(145deg, #123b72, #0b1728);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-weight: 800;
-  padding: 10px;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
 }
 
-.notice {
-  font-size: 12px;
-  color: #91a6bc;
-  line-height: 1.5;
-  text-align: center;
-  margin-top: 15px;
+.post{
+  min-height:160px;
+  border-radius:14px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-weight:900;
+  font-size:17px;
+  padding:15px;
+  cursor:pointer;
+  user-select:none;
+  transition:transform .15s;
 }
 
-footer {
-  text-align: center;
-  color: #70869e;
-  font-size: 12px;
-  padding: 15px;
+.post:active{
+  transform:scale(.95);
+}
+
+.post small{
+  margin-top:8px;
+  font-size:12px;
+  opacity:.8;
+  font-weight:normal;
+}
+
+.post:nth-child(1){
+  background:linear-gradient(145deg,#0a173d,#315fc4);
+}
+
+.post:nth-child(2){
+  background:linear-gradient(145deg,#171717,#8d5f3c);
+}
+
+.post:nth-child(3){
+  background:linear-gradient(145deg,#111,#555,#aaa);
+}
+
+.post:nth-child(4){
+  background:linear-gradient(145deg,#29104b,#7337aa);
+}
+
+.post:nth-child(5){
+  background:linear-gradient(145deg,#06202d,#147b91);
+}
+
+.post:nth-child(6){
+  background:linear-gradient(145deg,#151515,#344b7e);
+}
+
+.card{
+  background:#0d1d31;
+  border:1px solid #1d3855;
+  border-radius:15px;
+  padding:18px;
+  margin-bottom:12px;
+}
+
+.reward{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:15px 0;
+  border-bottom:1px solid #233b55;
+}
+
+.reward:last-child{
+  border-bottom:0;
+}
+
+.claim{
+  background:#1266d6;
+  color:white;
+  flex:none;
+  width:100px;
+}
+
+.claim.done{
+  background:#168548;
+}
+
+input{
+  width:100%;
+  padding:13px;
+  margin:7px 0 12px;
+  border-radius:9px;
+  border:1px solid #31506e;
+  background:#07111f;
+  color:white;
+  font-size:15px;
+}
+
+.save{
+  width:100%;
+  background:#1266d6;
+  color:white;
+}
+
+.notice{
+  color:#91a6bc;
+  font-size:12px;
+  line-height:1.5;
+}
+
+footer{
+  text-align:center;
+  color:#71869d;
+  font-size:12px;
+  padding:20px;
+}
+
+/* POPUP */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  z-index:100;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:100%;
+  max-width:420px;
+  background:#102239;
+  border:1px solid #31506e;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+  animation:popup .2s ease;
+}
+
+@keyframes popup{
+  from{
+    transform:scale(.85);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+.close{
+  width:100%;
+  background:#24364d;
+  color:#fff;
+  margin-top:12px;
+}
+
+.modal-title{
+  font-size:24px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+.modal-text{
+  color:#cbd9e8;
+  line-height:1.6;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">
-    eFOOTBALL <span>OFFICIAL</span>
+<div class="page">
+
+<header class="header">
+  eFootball™
+</header>
+
+<section class="profile">
+
+<div class="profile-row">
+
+<div class="logo">
+  eFootball™
+</div>
+
+<div>
+  <div class="name">
+    eFootball Official Page
   </div>
 
   <div class="handle">
     @efootballofficialpage
   </div>
-</header>
+</div>
 
-<div class="container">
+</div>
 
-  <!-- PROFILE -->
-  <div class="card">
+<div class="stats">
 
-    <div class="stats">
+<div>
+  <b>24</b>
+  <span>Posts</span>
+</div>
 
-      <div>
-        <b>24.8K</b>
-        <small>Followers</small>
-      </div>
+<div>
+  <b>1.2K</b>
+  <span>Followers</span>
+</div>
 
-      <div>
-        <b>186</b>
-        <small>Posts</small>
-      </div>
+<div>
+  <b>18</b>
+  <span>Following</span>
+</div>
 
-      <div>
-        <b>98</b>
-        <small>Following</small>
-      </div>
+</div>
 
-    </div>
+<div class="bio">
+eFootball updates, cards, news &amp; game content.
+<br>
+Fan-made page. Not affiliated with KONAMI.
+</div>
 
-    <p class="bio">
-      eFootball updates • player cards • events • game news
-      <br>
-      Your fan-made eFootball community.
-    </p>
+<div class="buttons">
 
-    <div style="text-align:center; margin-top:15px;">
+<button
+  id="followButton"
+  class="follow"
+  onclick="toggleFollow()">
+  Follow
+</button>
 
-      <a
-        class="link"
-        href="https://www.konami.com/efootball/en/"
-        target="_blank">
-        Official eFootball
-      </a>
+<a
+  class="button official"
+  href="https://www.konami.com/efootball/en/"
+  target="_blank">
+  Official eFootball
+</a>
 
-    </div>
+</div>
 
-  </div>
+</section>
 
 
-  <!-- TABS -->
+<!-- TABS -->
 
-  <div class="tabs">
+<div class="tabs">
 
-    <button onclick="showTab('home')">
-      Home
-    </button>
+<button
+  class="tab active"
+  onclick="openPanel('home',this)">
+  Home
+</button>
 
-    <button
-      class="secondary"
-      onclick="showTab('rewards')">
-      Rewards
-    </button>
+<button
+  class="tab"
+  onclick="openPanel('rewards',this)">
+  Rewards
+</button>
 
-    <button
-      class="secondary"
-      onclick="showTab('player')">
-      Player ID
-    </button>
+<button
+  class="tab"
+  onclick="openPanel('profile',this)">
+  Player ID
+</button>
 
-  </div>
+</div>
 
 
-  <!-- HOME -->
+<div class="content">
 
-  <div id="home" class="section active">
 
-    <div class="card">
+<!-- HOME -->
 
-      <h2>
-        Latest Updates
-      </h2>
+<div id="home" class="panel active">
 
-      <div class="posts">
+<div class="grid">
 
-        <div class="post">
-          NEW PLAYER<br>
-          CARDS
-        </div>
+<div
+  class="post"
+  onclick="openPost(
+    'Last Claim Card',
+    'Check out the latest fan-page card update and see what is new.'
+  )">
 
-        <div class="post">
-          WEEKLY<br>
-          EVENT
-        </div>
+  LAST CLAIM
+  <br>
+  CARD
 
-        <div class="post">
-          MATCHDAY<br>
-          NEWS
-        </div>
+  <small>
+    Tap to view
+  </small>
 
-        <div class="post">
-          GAME<br>
-          UPDATES
-        </div>
+</div>
 
-      </div>
 
-    </div>
+<div
+  class="post"
+  onclick="openPost(
+    'Epic Players',
+    'See the latest Epic Player discussion and featured player information.'
+  )">
 
-  </div>
+  EPIC
+  <br>
+  PLAYERS
 
+  <small>
+    Tap to view
+  </small>
 
-  <!-- REWARDS -->
+</div>
 
-  <div id="rewards" class="section">
 
-    <div class="card">
+<div
+  class="post"
+  onclick="openPost(
+    'New Update',
+    'Tap here to view details about the latest eFootball fan-page update.'
+  )">
 
-      <h2>
-        Fan Rewards
-      </h2>
+  NEW
+  <br>
+  UPDATE
 
-      <div class="reward">
+  <small>
+    Tap to view
+  </small>
 
-        <div>
-          <b>Daily Bonus</b>
-          <br>
+</div>
 
-          <span class="badge">
-            Fan reward
-          </span>
-        </div>
 
-        <button onclick="claim(this)">
-          Claim
-        </button>
+<div
+  class="post"
+  onclick="openPost(
+    'Pack Opening',
+    'View pack-opening content and fan reactions.'
+  )">
 
-      </div>
+  PACK
+  <br>
+  OPENING
 
+  <small>
+    Tap to view
+  </small>
 
-      <div class="reward">
+</div>
 
-        <div>
-          <b>Weekly Bonus</b>
-          <br>
 
-          <span class="badge">
-            Fan reward
-          </span>
-        </div>
+<div
+  class="post"
+  onclick="openPost(
+    'Player Ratings',
+    'View player rating discussions and featured players.'
+  )">
 
-        <button onclick="claim(this)">
-          Claim
-        </button>
+  PLAYER
+  <br>
+  RATINGS
 
-      </div>
+  <small>
+    Tap to view
+  </small>
 
-      <p class="notice">
-        These rewards are for this fan page only.
-        They do not add coins, players, or items
-        to an official eFootball account.
-      </p>
+</div>
 
-    </div>
 
-  </div>
+<div
+  class="post"
+  onclick="openPost(
+    'eFootball News',
+    'Tap to read the latest news posted on this fan page.'
+  )">
 
+  eFOOTBALL
+  <br>
+  NEWS
 
-  <!-- PLAYER ID -->
+  <small>
+    Tap to view
+  </small>
 
-  <div id="player" class="section">
+</div>
 
-    <div class="card">
+</div>
 
-      <h2>
-        Your Fan Profile
-      </h2>
+</div>
 
-      <label>
-        User ID
-      </label>
 
-      <input
-        id="uid"
-        type="text"
-        placeholder="Enter your eFootball User ID"
-      >
+<!-- REWARDS -->
 
-      <label>
-        Display Name
-      </label>
+<div id="rewards" class="panel">
 
-      <input
-        id="pname"
-        type="text"
-        placeholder="Enter your display name"
-      >
+<div class="card">
 
-      <button onclick="saveProfile()">
-        Save Profile
-      </button>
+<h2>
+Fan Rewards
+</h2>
 
-      <button
-        class="secondary"
-        onclick="clearProfile()">
-        Clear
-      </button>
+<div class="reward">
 
-      <p
-        id="saved"
-        class="notice">
-      </p>
+<div>
+<b>Daily Bonus</b>
+<br>
+<span class="notice">
+Fan-page reward
+</span>
+</div>
 
-    </div>
+<button
+  class="claim"
+  onclick="claimReward(this)">
+Claim
+</button>
 
-  </div>
+</div>
 
 
-  <!-- DISCLAIMER -->
+<div class="reward">
 
-  <div class="card">
+<div>
+<b>Weekly Bonus</b>
+<br>
+<span class="notice">
+Fan-page reward
+</span>
+</div>
 
-    <h3>
-      About this page
-    </h3>
+<button
+  class="claim"
+  onclick="claimReward(this)">
+Claim
+</button>
 
-    <p class="notice">
-      This is a fan-made website and is not affiliated
-      with or endorsed by KONAMI.
-      Never enter your KONAMI password,
-      verification code, or other private login
-      information here.
-    </p>
+</div>
 
-  </div>
+
+<div class="reward">
+
+<div>
+<b>Event Bonus</b>
+<br>
+<span class="notice">
+Fan-page reward
+</span>
+</div>
+
+<button
+  class="claim"
+  onclick="claimReward(this)">
+Claim
+</button>
+
+</div>
+
+<p class="notice">
+These are fan-page interactions only. They do not add
+coins, players, or items to an official eFootball account.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- PLAYER PROFILE -->
+
+<div id="profile" class="panel">
+
+<div class="card">
+
+<h2>
+Player ID
+</h2>
+
+<p class="notice">
+Create a profile for this fan website.
+</p>
+
+<label>
+User ID
+</label>
+
+<input
+  id="userId"
+  type="text"
+  placeholder="Enter your User ID">
+
+
+<label>
+Display Name
+</label>
+
+<input
+  id="displayName"
+  type="text"
+  placeholder="Enter your display name">
+
+
+<button
+  class="save"
+  onclick="saveProfile()">
+Save Profile
+</button>
+
+<p
+  id="profileMessage"
+  class="notice">
+</p>
+
+</div>
+
+</div>
 
 </div>
 
 
 <footer>
-  © 2026 eFootball Official Page — Fan site
+© 2026 eFootball Official Page — Fan site
 </footer>
+
+</div>
+
+
+<!-- POPUP -->
+
+<div
+  id="modal"
+  class="modal"
+  onclick="closeOutside(event)">
+
+<div class="modal-box">
+
+<div
+  id="modalTitle"
+  class="modal-title">
+</div>
+
+<div
+  id="modalText"
+  class="modal-text">
+</div>
+
+<button
+  class="close"
+  onclick="closeModal()">
+Close
+</button>
+
+</div>
+
+</div>
 
 
 <script>
 
-function showTab(id) {
+function openPanel(panelId, button){
 
   document
-    .querySelectorAll('.section')
-    .forEach(function(section) {
+    .querySelectorAll(".panel")
+    .forEach(function(panel){
 
-      section.classList.remove('active');
+      panel.classList.remove("active");
 
     });
 
   document
-    .getElementById(id)
-    .classList.add('active');
+    .getElementById(panelId)
+    .classList.add("active");
+
+  document
+    .querySelectorAll(".tab")
+    .forEach(function(tab){
+
+      tab.classList.remove("active");
+
+    });
+
+  button.classList.add("active");
 }
 
 
-function claim(button) {
+function toggleFollow(){
+
+  const button =
+    document.getElementById("followButton");
+
+  if(button.classList.contains("following")){
+
+    button.classList.remove("following");
+
+    button.textContent = "Follow";
+
+  }else{
+
+    button.classList.add("following");
+
+    button.textContent = "Following ✓";
+
+  }
+
+}
+
+
+function openPost(title,text){
+
+  document
+    .getElementById("modalTitle")
+    .textContent = title;
+
+  document
+    .getElementById("modalText")
+    .textContent = text;
+
+  document
+    .getElementById("modal")
+    .classList.add("show");
+
+}
+
+
+function closeModal(){
+
+  document
+    .getElementById("modal")
+    .classList.remove("show");
+
+}
+
+
+function closeOutside(event){
+
+  if(event.target.id === "modal"){
+
+    closeModal();
+
+  }
+
+}
+
+
+function claimReward(button){
 
   button.textContent = "Claimed ✓";
 
+  button.classList.add("done");
+
   button.disabled = true;
+
 }
 
 
-function saveProfile() {
+function saveProfile(){
 
-  const uid =
-    document.getElementById("uid").value.trim();
+  const userId =
+    document.getElementById("userId").value.trim();
 
   const name =
-    document.getElementById("pname").value.trim();
+    document.getElementById("displayName").value.trim();
 
-  const saved =
-    document.getElementById("saved");
+  const message =
+    document.getElementById("profileMessage");
 
-  if (!uid || !name) {
+  if(!userId || !name){
 
-    saved.textContent =
-      "Enter both fields first.";
+    message.textContent =
+      "Please enter both your User ID and display name.";
 
     return;
+
   }
 
   localStorage.setItem(
     "fanProfile",
     JSON.stringify({
-      uid: uid,
-      name: name
+      userId:userId,
+      name:name
     })
   );
 
-  saved.textContent =
+  message.textContent =
     "Profile saved on this device ✓";
+
 }
 
 
-function clearProfile() {
+window.addEventListener("load",function(){
 
-  localStorage.removeItem("fanProfile");
-
-  document.getElementById("uid").value = "";
-
-  document.getElementById("pname").value = "";
-
-  document.getElementById("saved").textContent =
-    "Profile cleared.";
-}
-
-
-window.addEventListener("load", function() {
-
-  const profile =
+  const saved =
     JSON.parse(
       localStorage.getItem("fanProfile") || "null"
     );
 
-  if (profile) {
+  if(saved){
 
-    document.getElementById("uid").value =
-      profile.uid || "";
+    document.getElementById("userId").value =
+      saved.userId || "";
 
-    document.getElementById("pname").value =
-      profile.name || "";
+    document.getElementById("displayName").value =
+      saved.name || "";
 
-    document.getElementById("saved").textContent =
+    document.getElementById("profileMessage").textContent =
       "Saved profile loaded ✓";
+
   }
 
 });
+
 
 </script>
 
