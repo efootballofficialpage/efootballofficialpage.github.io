@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>eFootball Official Page</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0b1018;color:#fff;font-family:Arial,sans-serif}.hero{background:linear-gradient(135deg,#061c55,#08a7ff);padding:30px 15px;text-align:center}.logo{font-size:36px;font-weight:900;font-style:italic}.sub{opacity:.9}.profile{padding:20px;background:#111923;text-align:center}.avatar{margin:auto;width:82px;height:82px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#ffe500,#087cff);color:#07152f;font-weight:900;font-size:25px;border:4px solid white}h1{font-size:22px;margin:10px 0 3px}.handle,.muted{color:#9eacbd}.stats{display:flex;justify-content:space-around;margin:18px 0}.stats b,.stats span{display:block}.stats span{font-size:12px;color:#9eacbd}.bio{line-height:1.5}.nav{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:12px;background:#0d141d;position:sticky;top:0}button{border:0;border-radius:9px;padding:12px 9px;background:#1c2938;color:#fff;font-weight:700}button.active,.primary{background:#087cff}.content{padding:15px;max-width:700px;margin:auto}.panel{display:none}.panel.active{display:block}.card{background:#121b26;border:1px solid #293849;border-radius:14px;padding:16px;margin-bottom:14px}.post{padding:0;overflow:hidden}.posttop,.postfoot{padding:14px}.postbody{height:180px;display:grid;place-items:center;background:linear-gradient(135deg,#123879,#07101c);font-size:28px;font-weight:900;font-style:italic}input{width:100%;padding:13px;margin:7px 0 12px;border-radius:9px;border:1px solid #344457;background:#0b121a;color:white}label{font-size:13px;color:#c2ccd8}.reward{display:flex;justify-content:space-between;align-items:center;padding:13px;border:1px solid #293849;border-radius:10px;margin:9px 0}.result{display:none;margin-top:12px;padding:12px;border-radius:9px;background:#0b2a1a;color:#a8f0c4}a{text-decoration:none}footer{text-align:center;color:#718096;font-size:12px;padding:25px}
+</style></head>
+<body>
+<header class="hero"><div class="logo">eFOOTBALL</div><div class="sub">Community Fan Portal</div></header>
+<section class="profile"><div class="avatar">EF</div><h1>eFootball Official Page ✓</h1><div class="handle">@efootballofficialpage</div>
+<div class="stats"><div><b>24</b><span>Posts</span></div><div><b>1.2K</b><span>Followers</span></div><div><b>18</b><span>Following</span></div></div>
+<div class="bio">eFootball news, player updates, community rewards &amp; fan content.<br>Independent fan-made page — not affiliated with KONAMI.</div></section>
+<nav class="nav"><button class="tab active" data-p="home">Home</button><button class="tab" data-p="rewards">Rewards</button><button class="tab" data-p="player">Player ID</button></nav>
+<main class="content">
+<section id="home" class="panel active"><div class="card post"><div class="posttop"><b>eFootball Community</b><div class="muted">New update • Fan post</div></div><div class="postbody">NEW PLAYER DROP</div><div class="postfoot">Latest community updates and fan content.</div></div>
+<div class="card"><h3>Quick actions</h3><button class="primary" onclick="show('player')">Enter Player ID</button> <button onclick="show('rewards')">View Rewards</button><br><a href="https://www.konami.com/efootball/en/" target="_blank" rel="noopener"><button style="margin-top:8px;width:100%">Official eFootball website</button></a></div></section>
+<section id="player" class="panel"><div class="card"><h2>Player Profile</h2><p class="muted">Enter your eFootball User ID. Never enter a KONAMI password or verification code here.</p><label>eFootball User ID</label><input id="uid" placeholder="Example: 123456789" inputmode="numeric"><label>Display name</label><input id="uname" placeholder="Your player name"><button class="primary" onclick="save()">Save profile</button><div id="saved" class="result"></div></div></section>
+<section id="rewards" class="panel"><div class="card"><h2>Community Rewards</h2><p class="muted">Fan-site rewards only; these do not add items to an actual eFootball account.</p>
+<div class="reward"><span>⭐ Daily Check-in</span><button onclick="claim(this)">Claim</button></div><div class="reward"><span>🎁 Community Bonus</span><button onclick="claim(this)">Claim</button></div><div class="reward"><span>🏆 Weekly Fan Reward</span><button onclick="claim(this)">Claim</button></div><div id="msg" class="result"></div></div></section>
+</main><footer>Fan-made community page. Not affiliated with or endorsed by KONAMI.<br>This page does not request or store KONAMI passwords or verification codes.</footer>
+<script>
+function show(id){document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.p===id))}
+document.querySelectorAll('.tab').forEach(x=>x.onclick=()=>show(x.dataset.p));
+function save(){let u=document.getElementById('uid').value.trim(),n=document.getElementById('uname').value.trim()||'Player',o=document.getElementById('saved');o.style.display='block';o.textContent=u?'Profile saved on this device for '+n+'.':'Please enter your eFootball User ID.';if(u)localStorage.setItem('fanPlayer',JSON.stringify({u,n}))}
+function claim(b){b.textContent='Claimed ✓';b.disabled=true;let m=document.getElementById('msg');m.style.display='block';m.textContent='Reward claimed on this fan site.'}
+</script></body></html>
